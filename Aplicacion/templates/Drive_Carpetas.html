@@ -1,0 +1,284 @@
+{% extends 'Drive_Master.html' %} {% load staticfiles %} {% block content %} {{ request.session.name }}
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Bienvenido: {{request.session.nombre}} </h3>
+            </div>
+
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <!--Inicia contenido-->
+        <form action="{% url 'Aplicacion.views.carpetasDjango' %}" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <!--Path-->
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>{{request.session.ruta}}</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="x_content">
+
+                        <div class="btn-group">
+                            
+                            <button type="button" class="btn btn-primary" title="Move Left">
+                                
+                            <label><i class="fa fa-arrow-left">
+                                </i></label><input type="radio" class="flat" name="sCheck" value="Atras">
+                        </button>
+                        </div>
+
+                        <!--BtnCarpetas-->
+                        <div class="btn-group">
+                            <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button" aria-expanded="false">
+                             <i class="fa fa-folder"> </i> Carpetas 
+                             <span class="caret"></span>
+                    </button>
+                            <ul role="menu" class="dropdown-menu">
+                                <div class="form-group">
+                                    <div class="radio">
+                                        <h5>
+                                            <input type="radio" class="flat" name="sCheck" value="C_Ir"> Ir
+                                        </h5>
+
+
+                                        <h5>
+                                            <input type="radio" class="flat" name="sCheck" value="C_Nuevo"> 
+                                            <button type="button" class="btn btn-link " data-toggle="modal" data-target=".bs-example-modal-sm">Nuevo</button>
+                                        </h5>
+
+
+                                        <h5>
+                                            <input type="radio" class="flat" name="sCheck" value="C_Modificar"> 
+                                            <button type="button" class="btn btn-link " data-toggle="modal" data-target=".bs-example-modal-sm">Modificar</button>
+                                        </h5>
+
+
+                                        <h5>
+                                            <input type="radio" class="flat" name="sCheck" value="C_Eliminar"> Eliminar
+                                        </h5>
+
+                                        <h5>
+                                            <input type="radio" class="flat" name="sCheck" value="C_Compartir">
+                                            <button type="button" class="btn btn-link " data-toggle="modal" data-target=".bs-example-modal-sm">Compartir</button>
+                                        </h5>
+
+
+                                    </div>
+                                </div>
+                            </ul>
+                        </div>
+                        <!--BtnCarpetas-->
+
+                        <!--BtnCarpetas-->
+                        <div class="btn-group">
+                            <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button" aria-expanded="false">
+                             <i class="fa fa-file"> </i> Archivos 
+                             <span class="caret"></span>
+                    </button>
+                            <ul role="menu" class="dropdown-menu">
+                                <div class="form-group">
+                                    <div class="radio">
+
+
+                                        <h5>
+                                            <input type="radio" class="flat" name="sCheck" value="A_Nuevo">
+                                            <button type="button" class="btn btn-link " data-toggle="modal" data-target=".bs-example-modal-sm">Nuevo</button>
+                                        </h5>
+
+
+                                        <h5>
+                                            <input type="radio" class="flat" name="sCheck" value="A_Modificar">
+                                            <button type="button" class="btn btn-link " data-toggle="modal" data-target=".bs-example-modal-sm">Modificar</button>
+                                        </h5>
+
+
+                                        <h5>
+                                            <input type="radio" class="flat" name="sCheck" value="A_Eliminar"> Eliminar
+                                        </h5>
+
+                                        <h5>
+                                            <input type="radio" class="flat" name="sCheck" value="A_Compartir">
+                                            <button type="button" class="btn btn-link " data-toggle="modal" data-target=".bs-example-modal-sm">Compartir</button>
+                                        </h5>
+
+
+                                        <h5>
+                                            <input type="radio" class="flat"   name="sCheck" value="A_Descargar">
+                                            <button type="button" class="btn btn-link " data-toggle="modal" data-target=".bs-example-modal-sm">Descargar</button>
+                                        
+                                        </h5>
+
+
+                                        <h5>
+                                            <input type="radio" class="flat"   name="sCheck" value="A_Subir">
+                                            <button type="button" class="btn btn-link " data-toggle="modal" data-target=".bs-example-modal-sm">Subir</button>
+                                        
+                                        </h5>
+
+
+                                    </div>
+                                </div>
+                            </ul>
+                        </div>
+
+                        <div class="btn-group">
+                            <button type="submit" class="btn btn-success" title="Move Left">
+                            Ok
+                        </button>
+                        </div>
+                        <!--BtnCarpetas-->
+
+                        <!--Modal-->
+                        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog modal-sm">
+                                <div class="modal-content">
+
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+                                    </button>
+                                        <h4 class="modal-title" id="myModalLabel2">Entrada</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="text" id='textBox' name ='textBox' >
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /modals -->
+
+                        <!--Modal-->
+
+
+
+                        <!--
+                    <button type="button" class="btn btn-round btn-default">Default</button>
+                    <button type="button" class="btn btn-round btn-primary">Primary</button>
+                    <button type="button" class="btn btn-round btn-success">Success</button>
+                    <button type="button" class="btn btn-round btn-info">Info</button>
+                    <button type="button" class="btn btn-round btn-warning">Warning</button>
+                    -->
+                    </div>
+                </div>
+                <!--Path-->
+
+                <!--Carpe-->
+                <div class="col-md-6">
+                    <div class="x_panel">
+
+                        <div class="x_title">
+                            <h2>Carpetas <small>different icon design elements</small></h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="x_content">
+                            {% for key, value in carpetas.items %}
+                            <!--Aqui van las carpetas-->
+                            <div class="form-group">
+                                <div class="radio">
+                                    <label>
+                                <input type="radio" class="flat" name="iCheck" value="{{value}}" >
+                                <button type="button" class="btn btn-round btn-primary ">
+                                    <i class="fa fa-folder"></i>  {{value}}
+                                </button>
+                            </label>
+                                </div>
+                            </div>
+                            <!--Aqui van las carpetas-->
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <!--Carpe-->
+
+
+                <!--Archivos-->
+                <div class="col-md-6">
+                    <div class="x_panel">
+
+                        <div class="x_title">
+                            <h2>Archivos <small>different icon design elements</small></h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="x_content">
+                            <!--Contenido de la pagina-->
+                            <div class="form-group">
+                                <div class="radio">
+                                    <label>
+                                <input type="radio" class="flat" name="aCheck" value="juegos.py">
+                                <button type="button" class="btn btn-round btn-default ">
+                                    <i class="fa fa-file"></i>  juegos.py
+                                </button>
+                                </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="radio">
+                                    <label>
+                                <input type="radio" class="flat" name="aCheck" value="videos.txt">
+                                <button type="button" class="btn btn-round btn-default ">
+                                    <i class="fa fa-file"></i>  videos.txt
+                                </button>
+                                </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="radio">
+                                    <label>
+                                <input type="radio" class="flat" name="aCheck" value="datos.mp4">
+                                <button type="button" class="btn btn-round btn-default ">
+                                    <i class="fa fa-file"></i>  datos.mp4
+                                </button>
+                                </label>
+                                </div>
+                            </div>
+
+                            <!--Contenido de la pagina-->
+
+                        </div>
+                    </div>
+                </div>
+                <!--Archivos-->
+        </form>
+        <ul>
+            {% for key, value in diccionario2.items %}
+            <li><a href="{{key}}">{{value}}</a></li>
+            {% endfor %}
+        </ul>
+        <!--Termina contenido-->
+
+        </div>
+    </div>
+</div>
+</div>
+<!-- /page content -->
+{% endblock %}

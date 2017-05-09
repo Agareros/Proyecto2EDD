@@ -1,0 +1,56 @@
+{% extends 'BaseLog.html' %} {% load staticfiles %} {% block content %}
+
+
+
+{% if messages %}
+<div class="alert alert-info alert-dismissable fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Atención!</strong> {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+</div>
+
+{% endif %}
+
+
+<h2>Registrarse</h2>
+<form action="{% url 'Aplicacion.views.registro' %}" method="POST">
+    
+    {% csrf_token %}
+    <div class="control-group normal_text">
+        <h3>Registro</h3>
+    </div>
+    <div class="control-gropu">
+        <input type="file" id="archivo" name="archivo" accept="image/*">
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <div class="main_input_box">
+                <span class="add-on bg_lg"><i class="icon-user"> </i></span><input type="text" placeholder="Username" id='usuario'
+                    name="usuario" />
+            </div>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <div class="main_input_box">
+                <span class="add-on bg_ly"><i class="icon-lock"></i></span><input type="password" placeholder="Password"
+                    id='password' name="password" />
+            </div>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <div class="main_input_box">
+                <span class="add-on bg_ly"><i class="icon-lock"></i></span><input type="password" placeholder="Repetir Contraseña"
+                    id='repassword' name="repassword" />
+            </div>
+        </div>
+    </div>
+    <div class="form-actions">
+        <span class="pull-left"><a href="{% url 'Aplicacion.views.login' %}" class="flip-link btn btn-info" id="to-recover">Cancelar</a></span>
+        <!-- <span class="pull-right"><a type="submit" class="btn btn-success" />Iniciar</a></span>-->
+        <span class="pull-right"><input type="submit" value="Iniciar" class="btn btn-success" ></span>
+    </div>
+</form>
+{% endblock %}

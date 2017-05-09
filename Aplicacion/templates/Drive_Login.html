@@ -1,0 +1,94 @@
+ {% load staticfiles %}
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="CoreUI Bootstrap 4 Admin Template">
+    <meta name="author" content="Joseph Cáceres">
+    <meta name="keyword" content="CoreUI Bootstrap 4 Admin Template">
+    <!-- <link rel="shortcut icon" href="assets/ico/favicon.png"> -->
+
+    <title>Acceso</title>
+
+    <!-- Icons -->
+    <link href="{% static 'Estilos/UI/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'Estilos/UI/css/simple-line-icons.css' %}" rel="stylesheet">
+
+    <!-- Main styles for this application -->
+    <link href="{% static 'Estilos/UI/css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body class="app flex-row align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card-group mb-0">
+                    <div class="card p-4">
+                        <div class="card-block">
+                            <form action="{% url 'Aplicacion.views.loginDjango' %}" method="POST">
+                                {% csrf_token %}
+
+                                <h1>Acceso</h1>
+                                <p class="text-muted">Iniciar sesión con su cuenta</p>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-addon"><i class="icon-user"></i>
+                                </span>
+                                    <input type="text" class="form-control" placeholder="Usuario" id='usuario' name ='usuario'>
+                                </div>
+                                <div class="input-group mb-4">
+                                    <span class="input-group-addon"><i class="icon-lock"></i>
+                                </span>
+                                    <input type="password" class="form-control" placeholder="Contraseña" id='contra' name='contra'>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <button type="submit" class="btn btn-primary px-4">Acceder</button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4 text-right">
+                                         <a href="{% url 'Aplicacion.views.registrarDjango' %}" class="btn btn-link px-0">Registrarse</a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 text-left">
+                                        <button type="button"  class="btn btn-link px-0">Olvidó su contraseña?</button>
+                                    </div>
+                                </div>
+                                
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card card-inverse card-primary py-5 d-md-down-none" style="width:44%">
+                        <div class="card-block text-center">
+                            <div>
+                                <h2>Registrarse</h2>
+                                <p>Registrese en drive, y tenga la libertad de subir la cantidad de archivos que usted desee.
+                                    Inicie desde hoy!.</p>
+                                <a href="{% url 'Aplicacion.views.registrarDjango' %}" class="btn btn-info  px-4">Registrarse ahora!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap and necessary plugins -->
+    <!--<script src="bower_components/jquery/dist/jquery.min.js" "{% static 'Estilos/UI/font-awesome/css/style.css' %}"  ></script>
+    <script src="bower_components/tether/dist/js/tether.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
+
+
+    <!-- <script src="{% static 'Estilos/UI/bower_components/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'Estilos/UI/bower_components/tether/dist/js/tether.min.js' %}"></script>
+    <script src="{% static 'Estilos/UI/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>-->
+
+
+</body>
+
+</html>

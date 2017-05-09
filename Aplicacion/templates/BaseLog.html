@@ -1,0 +1,43 @@
+ {% load staticfiles %}
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'Estilos/Matrix/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'Estilos/Matrix/css/bootstrap-responsive.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'Estilos/Matrix/css/matrix-login.css' %}" />
+    <link href="{% static 'Estilos/Matrix/font-awesome/css/font-awesome.css' %}" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+    <div id="loginbox">
+        {% block content %} 
+        {% endblock %}
+        
+        <form id="recoverform" action="#" class="form-vertical">
+            <p class="normal_text">Enter your e-mail address below and we will send you instructions how to recover a password.</p>
+
+            <div class="controls">
+                <div class="main_input_box">
+                    <span class="add-on bg_lo"><i class="icon-envelope"></i></span><input type="text" placeholder="E-mail address"
+                    />
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <span class="pull-left"><a href="#" class="flip-link btn btn-success" id="to-login">&laquo; Back to login</a></span>
+                <span class="pull-right"><a class="btn btn-info"/>Reecover</a></span>
+            </div>
+        </form>
+    </div>
+
+    <script src="{% static 'Estilos/Matrix/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'Estilos/Matrix/js/jquery.min.js' %}"></script>
+    <script src="{% static 'Estilos/Matrix/js/matrix.login.js' %}"></script>
+</body>
+
+</html>
